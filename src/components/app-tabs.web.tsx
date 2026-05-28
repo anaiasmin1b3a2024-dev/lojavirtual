@@ -28,12 +28,10 @@ export default function AppTabs() {
           </TabTrigger>
           
           <TabTrigger name="explore" href="/explore" asChild>
-            <TabButton> Inverno</TabButton>
+            <TabButton> Coleções</TabButton>
           </TabTrigger>
 
-          <TabTrigger name="explore" href="/verao" asChild>
-            <TabButton> Verão</TabButton>
-          </TabTrigger>
+        
 
           
         </CustomTabList>
@@ -69,16 +67,7 @@ export function CustomTabList(props: TabListProps) {
 
         {props.children}
 
-        <ExternalLink href="https://docs.expo.dev" asChild>
-          <Pressable style={styles.externalPressable}>
-            <ThemedText type="link">Docs</ThemedText>
-            <SymbolView
-              tintColor={colors.text}
-              name={{ ios: 'arrow.up.right.square', web: 'link' }}
-              size={12}
-            />
-          </Pressable>
-        </ExternalLink>
+        
       </ThemedView>
     </View>
   );

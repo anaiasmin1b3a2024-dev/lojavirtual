@@ -1,14 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
+ Text,
   FlatList,
   ImageBackground,
   Dimensions,
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
+import { router } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
@@ -18,39 +19,62 @@ const banners = [
     title: 'MINDSE7',
     subtitle: 'C&A + WORKING TITLE',
     image:
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: '2',
     title: 'NEW COLLECTION',
     subtitle: 'URBAN STYLE',
     image:
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c',
+      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: '3',
     title: 'FASHION DROP',
     subtitle: 'WINTER 2026',
     image:
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80',
   },
 ];
 
 export default function HomeScreen() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const flatListRef = useRef();
+  const flatListRef = useRef(null);
 
-  const onViewableItemsChanged = useRef(({ viewableItems }) => {
-    if (viewableItems.length > 0) {
-      setActiveIndex(viewableItems[0].index);
-    }
-  }).current;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // CARROSSEL AUTOMÁTICO
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex =
+        activeIndex === banners.length - 1
+          ? 0
+          : activeIndex + 1;
+
+      flatListRef.current?.scrollToOffset({
+        offset: nextIndex * width,
+        animated: true,
+      });
+
+      setActiveIndex(nextIndex);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
+  // ATUALIZA ÍNDICE AO ARRASTAR
+  const handleScroll = (event) => {
+    const slideSize = event.nativeEvent.layoutMeasurement.width;
+    const index = event.nativeEvent.contentOffset.x / slideSize;
+    const roundIndex = Math.round(index);
+
+    setActiveIndex(roundIndex);
+  };
 
   return (
     <View style={styles.container}>
       <StatusBar hidden />
 
-      {/* BANNER SUPERIOR */}
+      {/* TOPO */}
       <View style={styles.topBanner}>
         <Text style={styles.topText}>
           compre em até <Text style={styles.bold}>7x sem juros</Text>
@@ -65,10 +89,7 @@ export default function HomeScreen() {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        onViewableItemsChanged={onViewableItemsChanged}
-        viewabilityConfig={{
-          itemVisiblePercentThreshold: 50,
-        }}
+        onMomentumScrollEnd={handleScroll}
         renderItem={({ item }) => (
           <ImageBackground
             source={{ uri: item.image }}
@@ -79,17 +100,22 @@ export default function HomeScreen() {
             <View style={styles.content}>
               <Text style={styles.title}>{item.title}</Text>
 
-              <Text style={styles.subtitle}>{item.subtitle}</Text>
+              <Text style={styles.subtitle}>
+                {item.subtitle}
+              </Text>
 
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Comprar</Text>
-              </TouchableOpacity>
+              <TouchableOpacity
+  style={styles.button}
+  onPress={() => router.push('/explore')}
+>
+  <Text style={styles.buttonText}>Comprar</Text>
+</TouchableOpacity>
             </View>
           </ImageBackground>
         )}
       />
 
-      {/* PAGINAÇÃO */}
+      {/* BOLINHAS */}
       <View style={styles.pagination}>
         {banners.map((_, index) => (
           <View
@@ -193,3 +219,4 @@ const styles = StyleSheet.create({
     width: 22,
   },
 });
+

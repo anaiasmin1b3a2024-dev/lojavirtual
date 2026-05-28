@@ -1,181 +1,419 @@
-import { Image } from 'expo-image';
-import { SymbolView } from 'expo-symbols';
-import React from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+// import React from 'react';
+// import {
+//   StyleSheet,
+//   View,
+//   Text,
+//   FlatList,
+//   Image,
+//   TouchableOpacity,
+//   SafeAreaView,
+//   StatusBar,
+// } from 'react-native';
 
-import { ExternalLink } from '@/components/external-link';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Collapsible } from '@/components/ui/collapsible';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
+// const products = [
+//   {
+//     id: '1',
+//     title: 'Casaco Oversized',
+//     price: 'R$ 299,90',
+//     image:
+//       'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80',
+//   },
+//   {
+//     id: '2',
+//     title: 'Jaqueta Winter Black',
+//     price: 'R$ 359,90',
+//     image:
+//       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
+//   },
+//   {
+//     id: '3',
+//     title: 'Moletom Premium',
+//     price: 'R$ 189,90',
+//     image:
+//       'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80',
+//   },
+//   {
+//     id: '4',
+//     title: 'Sobretudo Elegance',
+//     price: 'R$ 449,90',
+//     image:
+//       'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80',
+//   },
+//   {
+//     id: '5',
+//     title: 'Blusa Gola Alta',
+//     price: 'R$ 159,90',
+//     image:
+//       'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+//   },
+//   {
+//     id: '6',
+//     title: 'Jaqueta Urban Ice',
+//     price: 'R$ 329,90',
+//     image:
+//       'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
+//   },
+// ];
 
-export default function TabTwoScreen() {
-  const safeAreaInsets = useSafeAreaInsets();
-  const insets = {
-    ...safeAreaInsets,
-    bottom: safeAreaInsets.bottom + BottomTabInset + Spacing.three,
+// export default function ExploreScreen() {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <StatusBar barStyle="light-content" />
+
+//       {/* HEADER */}
+//       <View style={styles.header}>
+//         <Text style={styles.subtitle}>Coleções 2026</Text>
+
+//         <Text style={styles.title}>ESPECIAL{"\n"}COLLECTIONS</Text>
+
+//         <Text style={styles.description}>
+//           Explore as novas tendências com peças modernas,
+//           elegantes e minimalistas.
+//         </Text>
+//       </View>
+
+//       {/* LISTA */}
+//       <FlatList
+//         data={products}
+//         keyExtractor={(item) => item.id}
+//         numColumns={2}
+//         showsVerticalScrollIndicator={false}
+//         contentContainerStyle={{
+//           paddingBottom: 100,
+//         }}
+//         renderItem={({ item }) => (
+//           <TouchableOpacity style={styles.card}>
+//             <Image
+//               source={{ uri: item.image }}
+//               style={styles.image}
+//             />
+
+//             <View style={styles.info}>
+//               <Text style={styles.productTitle}>
+//                 {item.title}
+//               </Text>
+
+//               <Text style={styles.price}>{item.price}</Text>
+//             </View>
+//           </TouchableOpacity>
+//         )}
+//       />
+//     </SafeAreaView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#0B0B0B',
+//     paddingTop: 40,
+//   },
+
+//   header: {
+//     paddingHorizontal: 20,
+//     marginBottom: 25,
+//   },
+
+//   subtitle: {
+//     color: '#8A8A8A',
+//     fontSize: 14,
+//     letterSpacing: 2,
+//     marginBottom: 10,
+//     textTransform: 'uppercase',
+//   },
+
+//   title: {
+//     color: '#FFFFFF',
+//     fontSize: 42,
+//     fontWeight: '900',
+//     lineHeight: 45,
+//     marginBottom: 15,
+//   },
+
+//   description: {
+//     color: '#B0B0B0',
+//     fontSize: 15,
+//     lineHeight: 24,
+//   },
+
+//   card: {
+//     flex: 1,
+//     margin: 10,
+//     backgroundColor: '#151515',
+//     borderRadius: 22,
+//     overflow: 'hidden',
+//   },
+
+//   image: {
+//     width: '100%',
+//     height: 260,
+//   },
+
+//   info: {
+//     padding: 15,
+//   },
+
+//   productTitle: {
+//     color: '#FFF',
+//     fontSize: 16,
+//     fontWeight: '600',
+//     marginBottom: 8,
+//   },
+
+//   price: {
+//     color: '#D6D6D6',
+//     fontSize: 15,
+//     fontWeight: 'bold',
+//   },
+// });
+
+
+
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+  StatusBar,
+} from 'react-native';
+
+type Product = {
+  id: string;
+  title: string;
+  price: number;
+  image: string;
+};
+
+const products: Product[] = [
+  {
+    id: '1',
+    title: 'Casaco Oversized',
+    price: 299.9,
+    image:
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: '2',
+    title: 'Jaqueta Winter Black',
+    price: 359.9,
+    image:
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: '3',
+    title: 'Moletom Premium',
+    price: 189.9,
+    image:
+      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: '4',
+    title: 'Sobretudo Elegance',
+    price: 449.9,
+    image:
+      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80',
+  },
+];
+
+export default function ExploreScreen() {
+  const [cart, setCart] = useState<Product[]>([]);
+
+  const addToCart = (product: Product) => {
+    setCart([...cart, product]);
   };
-  const theme = useTheme();
 
-  const contentPlatformStyle = Platform.select({
-    android: {
-      paddingTop: insets.top,
-      paddingLeft: insets.left,
-      paddingRight: insets.right,
-      paddingBottom: insets.bottom,
-    },
-    web: {
-      paddingTop: Spacing.six,
-      paddingBottom: Spacing.four,
-    },
-  });
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <ScrollView
-      style={[styles.scrollView, { backgroundColor: theme.background }]}
-      contentInset={insets}
-      contentContainerStyle={[styles.contentContainer, contentPlatformStyle]}>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.titleContainer}>
-          <ThemedText type="subtitle">Explore</ThemedText>
-          <ThemedText style={styles.centerText} themeColor="textSecondary">
-            This starter app includes example{'\n'}code to help you get started.
-          </ThemedText>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" />
 
-          <ExternalLink href="https://docs.expo.dev" asChild>
-            <Pressable style={({ pressed }) => pressed && styles.pressed}>
-              <ThemedView type="backgroundElement" style={styles.linkButton}>
-                <ThemedText type="link">Expo documentation</ThemedText>
-                <SymbolView
-                  tintColor={theme.text}
-                  name={{ ios: 'arrow.up.right.square', android: 'link', web: 'link' }}
-                  size={12}
-                />
-              </ThemedView>
-            </Pressable>
-          </ExternalLink>
-        </ThemedView>
+      {/* HEADER */}
+      <View style={styles.header}>
+        <View>
+          <Text style={styles.subtitle}>Coleções 2026</Text>
 
-        <ThemedView style={styles.sectionsWrapper}>
-          <Collapsible title="File-based routing">
-            <ThemedText type="small">
-              This app has two screens: <ThemedText type="code">src/app/index.tsx</ThemedText> and{' '}
-              <ThemedText type="code">src/app/explore.tsx</ThemedText>
-            </ThemedText>
-            <ThemedText type="small">
-              The layout file in <ThemedText type="code">src/app/_layout.tsx</ThemedText> sets up
-              the tab navigator.
-            </ThemedText>
-            <ExternalLink href="https://docs.expo.dev/router/introduction">
-              <ThemedText type="linkPrimary">Learn more</ThemedText>
-            </ExternalLink>
-          </Collapsible>
+          <Text style={styles.title}>
+            WINTER{'\n'}COLLECTION
+          </Text>
+        </View>
 
-          <Collapsible title="Android, iOS, and web support">
-            <ThemedView type="backgroundElement" style={styles.collapsibleContent}>
-              <ThemedText type="small">
-                You can open this project on Android, iOS, and the web. To open the web version,
-                press <ThemedText type="smallBold">w</ThemedText> in the terminal running this
-                project.
-              </ThemedText>
-              <Image
-                source={require('@/assets/images/tutorial-web.png')}
-                style={styles.imageTutorial}
-              />
-            </ThemedView>
-          </Collapsible>
+        {/* CARRINHO */}
+        <View style={styles.cartContainer}>
+          <Text style={styles.cartIcon}>🛒</Text>
 
-          <Collapsible title="Images">
-            <ThemedText type="small">
-              For static images, you can use the <ThemedText type="code">@2x</ThemedText> and{' '}
-              <ThemedText type="code">@3x</ThemedText> suffixes to provide files for different
-              screen densities.
-            </ThemedText>
-            <Image source={require('@/assets/images/react-logo.png')} style={styles.imageReact} />
-            <ExternalLink href="https://reactnative.dev/docs/images">
-              <ThemedText type="linkPrimary">Learn more</ThemedText>
-            </ExternalLink>
-          </Collapsible>
+          <View style={styles.cartBadge}>
+            <Text style={styles.cartCount}>
+              {cart.length}
+            </Text>
+          </View>
+        </View>
+      </View>
 
-          <Collapsible title="Light and dark mode components">
-            <ThemedText type="small">
-              This template has light and dark mode support. The{' '}
-              <ThemedText type="code">useColorScheme()</ThemedText> hook lets you inspect what the
-              user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-            </ThemedText>
-            <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-              <ThemedText type="linkPrimary">Learn more</ThemedText>
-            </ExternalLink>
-          </Collapsible>
+      {/* TOTAL */}
+      <View style={styles.totalContainer}>
+        <Text style={styles.totalText}>
+          Total: R$ {total.toFixed(2)}
+        </Text>
+      </View>
 
-          <Collapsible title="Animations">
-            <ThemedText type="small">
-              This template includes an example of an animated component. The{' '}
-              <ThemedText type="code">src/components/ui/collapsible.tsx</ThemedText> component uses
-              the powerful <ThemedText type="code">react-native-reanimated</ThemedText> library to
-              animate opening this hint.
-            </ThemedText>
-          </Collapsible>
-        </ThemedView>
-        {Platform.OS === 'web' && <WebBadge />}
-      </ThemedView>
-    </ScrollView>
+      {/* PRODUTOS */}
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 120,
+        }}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image
+              source={{ uri: item.image }}
+              style={styles.image}
+            />
+
+            <View style={styles.info}>
+              <Text style={styles.productTitle}>
+                {item.title}
+              </Text>
+
+              <Text style={styles.price}>
+                R$ {item.price.toFixed(2)}
+              </Text>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => addToCart(item)}
+              >
+                <Text style={styles.buttonText}>
+                  Adicionar
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-  },
-  contentContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
   container: {
-    maxWidth: MaxContentWidth,
-    flexGrow: 1,
+    flex: 1,
+    backgroundColor: '#0B0B0B',
+    paddingTop: 40,
   },
-  titleContainer: {
-    gap: Spacing.three,
-    alignItems: 'center',
-    paddingHorizontal: Spacing.four,
-    paddingVertical: Spacing.six,
-  },
-  centerText: {
-    textAlign: 'center',
-  },
-  pressed: {
-    opacity: 0.7,
-  },
-  linkButton: {
+
+  header: {
+    paddingHorizontal: 20,
+    marginBottom: 10,
     flexDirection: 'row',
-    paddingHorizontal: Spacing.four,
-    paddingVertical: Spacing.two,
-    borderRadius: Spacing.five,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  subtitle: {
+    color: '#8A8A8A',
+    fontSize: 14,
+    letterSpacing: 2,
+    marginBottom: 10,
+    textTransform: 'uppercase',
+  },
+
+  title: {
+    color: '#FFFFFF',
+    fontSize: 38,
+    fontWeight: '900',
+    lineHeight: 42,
+  },
+
+  cartContainer: {
+    width: 55,
+    height: 55,
+    borderRadius: 30,
+    backgroundColor: '#1B1B1B',
     justifyContent: 'center',
-    gap: Spacing.one,
     alignItems: 'center',
   },
-  sectionsWrapper: {
-    gap: Spacing.five,
-    paddingHorizontal: Spacing.four,
-    paddingTop: Spacing.three,
+
+  cartIcon: {
+    fontSize: 24,
   },
-  collapsibleContent: {
+
+  cartBadge: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  imageTutorial: {
+
+  cartCount: {
+    color: '#000',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+
+  totalContainer: {
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+
+  totalText: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+
+  card: {
+    flex: 1,
+    margin: 10,
+    backgroundColor: '#151515',
+    borderRadius: 22,
+    overflow: 'hidden',
+  },
+
+  image: {
     width: '100%',
-    aspectRatio: 296 / 171,
-    borderRadius: Spacing.three,
-    marginTop: Spacing.two,
+    height: 240,
   },
-  imageReact: {
-    width: 100,
-    height: 100,
-    alignSelf: 'center',
+
+  info: {
+    padding: 15,
+  },
+
+  productTitle: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+
+  price: {
+    color: '#D6D6D6',
+    fontSize: 15,
+    marginBottom: 15,
+  },
+
+  button: {
+    backgroundColor: '#FFF',
+    paddingVertical: 12,
+    borderRadius: 14,
+    alignItems: 'center',
+  },
+
+  buttonText: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });
