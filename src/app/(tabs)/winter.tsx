@@ -21,7 +21,7 @@ const winterProducts = [
     id: '2',
     name: 'Aurora Jacket',
     price: 'R$ 289,90',
-    info: 'Jaqueta urbana com acabamento térmico.',
+    info: 'Jaqueta urbana térmica.',
     image:
       'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800',
   },
@@ -29,7 +29,7 @@ const winterProducts = [
     id: '3',
     name: 'Glacier Sweater',
     price: 'R$ 219,90',
-    info: 'Suéter confortável em lã macia.',
+    info: 'Suéter confortável em lã preta.',
     image:
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800',
   },
