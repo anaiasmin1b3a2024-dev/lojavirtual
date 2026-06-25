@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from 'react-native';
 
 const winterProducts = [
@@ -36,16 +37,35 @@ const winterProducts = [
 ];
 
 export default function WinterScreen() {
+  const { width } = useWindowDimensions();
+
+  const isMobile = width < 768;
+
   return (
     <FlatList
       style={styles.container}
+      contentContainerStyle={{
+        alignItems: 'center',
+      }}
       ListHeaderComponent={
-        <View style={styles.header}>
+        <View
+          style={[
+            styles.header,
+            {
+              width: '100%',
+            },
+          ]}>
           <Text style={styles.collection}>
             WINTER COLLECTION
           </Text>
 
-          <Text style={styles.title}>
+          <Text
+            style={[
+              styles.title,
+              {
+                fontSize: isMobile ? 30 : 40,
+              },
+            ]}>
             WINTER 2026
           </Text>
 
@@ -57,10 +77,21 @@ export default function WinterScreen() {
       data={winterProducts}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <View style={styles.card}>
+        <View
+          style={[
+            styles.card,
+            {
+              width: isMobile ? '92%' : 700,
+            },
+          ]}>
           <Image
             source={{ uri: item.image }}
-            style={styles.image}
+            style={[
+              styles.image,
+              {
+                height: isMobile ? 250 : 350,
+              },
+            ]}
           />
 
           <View style={styles.content}>
@@ -107,7 +138,6 @@ const styles = StyleSheet.create({
 
   title: {
     color: '#FFFFFF',
-    fontSize: 40,
     fontWeight: 'bold',
   },
 
@@ -125,7 +155,6 @@ const styles = StyleSheet.create({
 
   image: {
     width: '100%',
-    height: 300,
   },
 
   content: {
