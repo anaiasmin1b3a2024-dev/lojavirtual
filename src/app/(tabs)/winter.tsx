@@ -29,7 +29,7 @@ const winterProducts = [
     id: '3',
     name: 'Glacier Sweater',
     price: 'R$ 219,90',
-    info: 'Suéter confortável em lã preta.',
+    info: 'Suéter confortável em lã pretaS.',
     image:
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800',
   },
