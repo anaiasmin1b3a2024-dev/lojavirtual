@@ -22,9 +22,12 @@ export default function AppTabs() {
           <TabTrigger name="index" href="/" asChild>
             <TabButton>HOME</TabButton>
           </TabTrigger>
+<<<<<<< HEAD
              <TabTrigger name="winter" href="/winter" asChild>
             <TabButton>WINTER COLLECTION SPECIAL</TabButton>
             </TabTrigger>
+=======
+>>>>>>> 3aaca8ba221f6592bdef1f73ac1dbcc4edba1db1
           
           <TabTrigger name="explore" href="/explore" asChild>
             <TabButton>SHOP</TabButton>
