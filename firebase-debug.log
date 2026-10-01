@@ -1,0 +1,93 @@
+[debug] [2026-10-01T11:39:52.441Z] ----------------------------------------------------------------------
+[debug] [2026-10-01T11:39:52.449Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --debug
+[debug] [2026-10-01T11:39:52.450Z] CLI Version:   15.32.1
+[debug] [2026-10-01T11:39:52.450Z] Platform:      win32
+[debug] [2026-10-01T11:39:52.450Z] Node Version:  v24.19.0
+[debug] [2026-10-01T11:39:52.451Z] Detected Agent: unknown
+[debug] [2026-10-01T11:39:52.451Z] Time:          Thu Oct 01 2026 08:39:52 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-10-01T11:39:52.452Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-10-01T11:39:54.598Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-10-01T11:39:54.598Z] > authorizing via signed-in user (ana.iasmin1b3a2024@gmail.com)
+[debug] [2026-10-01T11:39:54.598Z] [iam] checking project lojavirtual2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-10-01T11:39:54.617Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:54.617Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:54.619Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/lojavirtual2:testIamPermissions [none]
+[debug] [2026-10-01T11:39:54.619Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/lojavirtual2:testIamPermissions  x-goog-user-project=lojavirtual2
+[debug] [2026-10-01T11:39:54.619Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/lojavirtual2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-10-01T11:39:55.534Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/lojavirtual2:testIamPermissions 200
+[debug] [2026-10-01T11:39:55.534Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/lojavirtual2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-10-01T11:39:55.535Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:55.536Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:55.536Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lojavirtual2 [none]
+[debug] [2026-10-01T11:39:55.956Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lojavirtual2 200
+[debug] [2026-10-01T11:39:55.956Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lojavirtual2 {"projectId":"lojavirtual2","projectNumber":"281439453823","displayName":"lojavirtual2","name":"projects/lojavirtual2","resources":{"hostingSite":"lojavirtual2"},"state":"ACTIVE","labels":{"firebase":"enabled"},"etag":"1_27e4deed-726d-4c6a-bfc5-75f8f87dccc2"}
+[info] 
+[info] === Deploying to 'lojavirtual2'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-10-01T11:39:55.960Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:55.960Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:55.960Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/lojavirtual2/sites/lojavirtual2 [none]
+[debug] [2026-10-01T11:39:57.131Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/lojavirtual2/sites/lojavirtual2 200
+[debug] [2026-10-01T11:39:57.131Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/lojavirtual2/sites/lojavirtual2 {"name":"projects/lojavirtual2/sites/lojavirtual2","defaultUrl":"https://lojavirtual2.web.app","type":"DEFAULT_SITE"}
+[debug] [2026-10-01T11:39:57.135Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:57.135Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:57.136Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions [none]
+[debug] [2026-10-01T11:39:57.137Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-10-01T11:39:57.646Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions 200
+[debug] [2026-10-01T11:39:57.646Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions {"name":"projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[lojavirtual2]: beginning deploy... 
+[info] i  hosting[lojavirtual2]: found 15 files in dist 
+[debug] [2026-10-01T11:39:57.670Z] [hosting] uploading with 200 concurrency
+[debug] [2026-10-01T11:39:57.675Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:57.675Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:57.677Z] [hosting] hash cache [ZGlzdA] stored for 15 files
+[debug] [2026-10-01T11:39:57.677Z] [hosting][hash queue][FINAL] {"max":3,"min":1,"avg":1,"active":0,"complete":15,"success":15,"errored":0,"retried":0,"total":15,"elapsed":5}
+[debug] [2026-10-01T11:39:57.678Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8:populateFiles [none]
+[debug] [2026-10-01T11:39:57.678Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8:populateFiles {"files":{"/_sitemap.html":"81839770d9010f7ba534f5a70010d3e484f3d390e66e101c7b7ed6666c60e101","/winter.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/index.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/favicon.ico":"6ddab5ba4d0e73bc47d12e5e99db8fc49bd24eee5d9af12047f09a782236cb37","/explore.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/cart.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/+not-found.html":"81839770d9010f7ba534f5a70010d3e484f3d390e66e101c7b7ed6666c60e101","/_expo/static/js/web/entry-ab741aecfe45531877b311cfa741b131.js":"598bcbc8203b08e0b00bbfeb46f6445264848e6fb9c995cceecfc33d8cf2fa53","/_expo/static/css/animated-icon.module-eec65aa47fc61787231f45ae14d688f6.css":"c728656d00b904152884c8fc1e320ac63e7df20847e1bc11dd2a332fc93a07c1","/product/[id].html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/assets/assets/images/logo-glow.dbca075a49dc45e550c5d2e3e9601039.png":"1cdfeb88df5d981767fa124d71df18f83f2ec83f012dadc1679501bb142c39b1","/assets/assets/images/expo-logo.5ee5db91d59518c45ebcc99a2f5afc57.png":"ef11478e0df65f684623fd675a43881969e9bfcfc37c3bdb5bab7538da395a18","/(tabs)/winter.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/(tabs)/index.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83","/(tabs)/explore.html":"ad9d4a13c84e5869ad578fa098e4d10a518ea2d0acb705adc48d5aba7d940a83"}}
+[debug] [2026-10-01T11:39:58.139Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8:populateFiles 200
+[debug] [2026-10-01T11:39:58.139Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/lojavirtual2/versions/f373ae65f66de4b8/files"}
+[debug] [2026-10-01T11:39:58.139Z] [hosting][populate queue][FINAL] {"max":464,"min":464,"avg":464,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":464}
+[debug] [2026-10-01T11:39:58.139Z] [hosting] uploads queued: 0
+[debug] [2026-10-01T11:39:58.140Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1790854798140}
+[info] i  hosting: upload complete 
+[info] +  hosting[lojavirtual2]: file upload complete 
+[debug] [2026-10-01T11:39:58.140Z] [hosting] deploy completed after 490ms
+[debug] [2026-10-01T11:39:58.141Z] [
+  {
+    "config": {
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "site": "lojavirtual2"
+    },
+    "version": "projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8"
+  }
+]
+[info] i  hosting[lojavirtual2]: finalizing version... 
+[debug] [2026-10-01T11:39:58.142Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:58.142Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:58.143Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions/f373ae65f66de4b8 updateMask=status%2Cconfig
+[debug] [2026-10-01T11:39:58.143Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions/f373ae65f66de4b8 {"status":"FINALIZED","config":{}}
+[debug] [2026-10-01T11:39:58.531Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions/f373ae65f66de4b8 200
+[debug] [2026-10-01T11:39:58.531Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/versions/f373ae65f66de4b8 {"name":"projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8","status":"FINALIZED","config":{},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-10-01T11:41:02.670763Z","createUser":{"email":"ana.iasmin1b3a2024@gmail.com"},"finalizeTime":"2026-10-01T11:41:03.732640Z","finalizeUser":{"email":"ana.iasmin1b3a2024@gmail.com"}}
+[debug] [2026-10-01T11:39:58.531Z] [hosting] finalized version for lojavirtual2:[object Object]
+[info] +  hosting[lojavirtual2]: version finalized 
+[info] i  hosting[lojavirtual2]: releasing new version... 
+[debug] [2026-10-01T11:39:58.532Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:58.533Z] Checked if tokens are valid: true, expires at: 1790855704685
+[debug] [2026-10-01T11:39:58.533Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/channels/live/releases versionName=projects%2F281439453823%2Fsites%2Flojavirtual2%2Fversions%2Ff373ae65f66de4b8
+[debug] [2026-10-01T11:39:58.533Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/channels/live/releases {}
+[debug] [2026-10-01T11:39:58.941Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/channels/live/releases 200
+[debug] [2026-10-01T11:39:58.942Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/lojavirtual2/channels/live/releases {"name":"projects/281439453823/sites/lojavirtual2/channels/live/releases/1790854863567000","version":{"name":"projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8","status":"FINALIZED","config":{},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-10-01T11:41:02.670763Z","createUser":{"email":"ana.iasmin1b3a2024@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIKjsYqZSwRE1gMXs4jY8eSbPQvLnSw0rcmanDjuErjpw0-8b0"},"finalizeTime":"2026-10-01T11:41:03.732640Z","finalizeUser":{"email":"ana.iasmin1b3a2024@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIKjsYqZSwRE1gMXs4jY8eSbPQvLnSw0rcmanDjuErjpw0-8b0"}},"type":"DEPLOY","releaseTime":"2026-10-01T11:41:03.567Z","releaseUser":{"email":"ana.iasmin1b3a2024@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIKjsYqZSwRE1gMXs4jY8eSbPQvLnSw0rcmanDjuErjpw0-8b0"}}
+[debug] [2026-10-01T11:39:58.942Z] [hosting] release: {"name":"projects/281439453823/sites/lojavirtual2/channels/live/releases/1790854863567000","version":{"name":"projects/281439453823/sites/lojavirtual2/versions/f373ae65f66de4b8","status":"FINALIZED","config":{},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-10-01T11:41:02.670763Z","createUser":{"email":"ana.iasmin1b3a2024@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIKjsYqZSwRE1gMXs4jY8eSbPQvLnSw0rcmanDjuErjpw0-8b0"},"finalizeTime":"2026-10-01T11:41:03.732640Z","finalizeUser":{"email":"ana.iasmin1b3a2024@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIKjsYqZSwRE1gMXs4jY8eSbPQvLnSw0rcmanDjuErjpw0-8b0"}},"type":"DEPLOY","releaseTime":"2026-10-01T11:41:03.567Z","releaseUser":{"email":"ana.iasmin1b3a2024@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIKjsYqZSwRE1gMXs4jY8eSbPQvLnSw0rcmanDjuErjpw0-8b0"}}
+[info] +  hosting[lojavirtual2]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/lojavirtual2/overview
+[info] Hosting URL: https://lojavirtual2.web.app
